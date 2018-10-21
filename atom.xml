@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hpduy.github.io/"/>
-  <updated>2018-10-19T15:04:47.668Z</updated>
+  <updated>2018-10-20T14:18:20.472Z</updated>
   <id>https://hpduy.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://hpduy.github.io/2018/10/19/hello-world/"/>
-    <id>https://hpduy.github.io/2018/10/19/hello-world/</id>
-    <published>2018-10-19T13:41:56.492Z</published>
-    <updated>2018-10-19T15:04:47.668Z</updated>
+    <title>The end is not the end</title>
+    <link href="https://hpduy.github.io/2017/03/25/The-end-is-not-the-end/"/>
+    <id>https://hpduy.github.io/2017/03/25/The-end-is-not-the-end/</id>
+    <published>2017-03-25T14:01:41.000Z</published>
+    <updated>2018-10-20T14:18:20.472Z</updated>
     
     <summary type="html">
     
@@ -29,20 +29,55 @@
       
         
         
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+          &lt;p&gt;&lt;img src=&quot;cover.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Yesterday is the graduation day of my school (JAIST). It really a nice day for my seniors to get
         
       
     
     </summary>
     
-      <category term="Baasda" scheme="https://hpduy.github.io/categories/Baasda/"/>
+      <category term="Lifestyle" scheme="https://hpduy.github.io/categories/Lifestyle/"/>
     
-      <category term="asdasd" scheme="https://hpduy.github.io/categories/Baasda/asdasd/"/>
+      <category term="Japan" scheme="https://hpduy.github.io/categories/Lifestyle/Japan/"/>
     
     
-      <category term="Foo" scheme="https://hpduy.github.io/tags/Foo/"/>
+      <category term="diary" scheme="https://hpduy.github.io/tags/diary/"/>
     
-      <category term="Bar" scheme="https://hpduy.github.io/tags/Bar/"/>
+      <category term="JAIST" scheme="https://hpduy.github.io/tags/JAIST/"/>
+    
+      <category term="master" scheme="https://hpduy.github.io/tags/master/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Conference trip to Netherlands</title>
+    <link href="https://hpduy.github.io/2017/03/06/Conference-trip-to-Netherlands/"/>
+    <id>https://hpduy.github.io/2017/03/06/Conference-trip-to-Netherlands/</id>
+    <published>2017-03-06T14:15:53.000Z</published>
+    <updated>2018-10-21T01:12:19.843Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;After 8 months I went to Japan, I have submitted my first research result to the International Conference - GALA (Games and Learning
+        
+      
+    
+    </summary>
+    
+      <category term="Lifestyle" scheme="https://hpduy.github.io/categories/Lifestyle/"/>
+    
+      <category term="Japan" scheme="https://hpduy.github.io/categories/Lifestyle/Japan/"/>
+    
+    
+      <category term="conference" scheme="https://hpduy.github.io/tags/conference/"/>
+    
+      <category term="trip" scheme="https://hpduy.github.io/tags/trip/"/>
+    
+      <category term="serious-game" scheme="https://hpduy.github.io/tags/serious-game/"/>
     
   </entry>
   
