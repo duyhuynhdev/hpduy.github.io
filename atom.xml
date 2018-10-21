@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hpduy.github.io/"/>
-  <updated>2018-10-20T14:18:20.472Z</updated>
+  <updated>2018-10-21T05:18:22.490Z</updated>
   <id>https://hpduy.github.io/</id>
   
   <author>
@@ -15,6 +15,104 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to deploy Laravel application to apache in CentOS 7</title>
+    <link href="https://hpduy.github.io/2018/10/21/How-to-deploy-Laravel-application-to-apache-CentOS-7/"/>
+    <id>https://hpduy.github.io/2018/10/21/How-to-deploy-Laravel-application-to-apache-CentOS-7/</id>
+    <published>2018-10-21T04:59:56.000Z</published>
+    <updated>2018-10-21T05:18:22.490Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Deploy-Laravel-projects-to-CentOS-server&quot;&gt;&lt;a href=&quot;#Deploy-Laravel-projects-to-CentOS-server&quot; class=&quot;headerlink&quot; title=&quot;Deploy
+        
+      
+    
+    </summary>
+    
+      <category term="Technical" scheme="https://hpduy.github.io/categories/Technical/"/>
+    
+      <category term="PHP" scheme="https://hpduy.github.io/categories/Technical/PHP/"/>
+    
+      <category term="Laravel" scheme="https://hpduy.github.io/categories/Technical/PHP/Laravel/"/>
+    
+    
+      <category term="PHP" scheme="https://hpduy.github.io/tags/PHP/"/>
+    
+      <category term="Laravel" scheme="https://hpduy.github.io/tags/Laravel/"/>
+    
+      <category term="CentOS" scheme="https://hpduy.github.io/tags/CentOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Deal with Swift-TransportException when send Gmail from Laravel application</title>
+    <link href="https://hpduy.github.io/2018/10/21/Deal-with-Swift-TransportException/"/>
+    <id>https://hpduy.github.io/2018/10/21/Deal-with-Swift-TransportException/</id>
+    <published>2018-10-21T04:50:53.000Z</published>
+    <updated>2018-10-21T04:57:22.814Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Swift-TransportException-Connection-could-not-be-established&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Technical" scheme="https://hpduy.github.io/categories/Technical/"/>
+    
+      <category term="PHP" scheme="https://hpduy.github.io/categories/Technical/PHP/"/>
+    
+      <category term="Laravel" scheme="https://hpduy.github.io/categories/Technical/PHP/Laravel/"/>
+    
+    
+      <category term="PHP" scheme="https://hpduy.github.io/tags/PHP/"/>
+    
+      <category term="Laravel" scheme="https://hpduy.github.io/tags/Laravel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Laravel Command Sheet</title>
+    <link href="https://hpduy.github.io/2018/10/21/Laravel-Command-Sheet/"/>
+    <id>https://hpduy.github.io/2018/10/21/Laravel-Command-Sheet/</id>
+    <published>2018-10-21T04:46:50.000Z</published>
+    <updated>2018-10-21T04:48:38.428Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;This is a laravel commands board which are often used by me. I think it is good for aggregate some used command for quick
+        
+      
+    
+    </summary>
+    
+      <category term="Technical" scheme="https://hpduy.github.io/categories/Technical/"/>
+    
+      <category term="PHP" scheme="https://hpduy.github.io/categories/Technical/PHP/"/>
+    
+      <category term="Laravel" scheme="https://hpduy.github.io/categories/Technical/PHP/Laravel/"/>
+    
+    
+      <category term="PHP" scheme="https://hpduy.github.io/tags/PHP/"/>
+    
+      <category term="Laravel" scheme="https://hpduy.github.io/tags/Laravel/"/>
+    
+  </entry>
   
   <entry>
     <title>The end is not the end</title>

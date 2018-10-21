@@ -3,6 +3,95 @@
   
     
     <entry>
+      <title>How to deploy Laravel application to apache in CentOS 7</title>
+      <link href="/2018/10/21/How-to-deploy-Laravel-application-to-apache-CentOS-7/"/>
+      <url>/2018/10/21/How-to-deploy-Laravel-application-to-apache-CentOS-7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Deploy-Laravel-projects-to-CentOS-server"><a href="#Deploy-Laravel-projects-to-CentOS-server" class="headerlink" title="Deploy Laravel projects to CentOS server."></a>Deploy Laravel projects to CentOS server.</h1><p>This note shows my mistakes in early stage of using Laravel due to lack of understanding the way this framework works. This also shows my solution and my experience after solving this problem .<br></p><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>In the beginning, I deploy my project to Apache by using Git to clone and pull a project from my PC. Later, I used <code>php artisan serve --host=110.xxx.xx.xx --port=8080</code> for starting my website and it works well in any scence. Afterward, I try to deploy other project to the same server by running the same command but on an other port <code>php artisan serve --host=110.xxx.xx.xx --port=8181</code>. Although it run normally but I cannot access the second one. I only access the second when I stop to serve the first. So the question in my mind at that time is:<br></p><blockquote><p>How can we run multiple Laravel projects (multiple websites) in the same host?</p></blockquote><h2 id="Where-is-my-solution"><a href="#Where-is-my-solution" class="headerlink" title="Where is my solution?"></a>Where is my solution?</h2><p>Firstly, I try to find answers in <a href="https://stackoverflow.com/" target="_blank" rel="noopener">Stackoverflow</a> and <a href="https://laracasts.com/" target="_blank" rel="noopener">Laracast</a> for the question <em>“How to serve multiple Laravel website by using artisan?”</em>. Although I found many solutions, those are related to openning a VirtualHost on serve. Those are not my expected solution so I try to find another way.<br></p><p>After reading a ton of posts, I have found the good way to deploy our app to Apache without using <code>php artisan</code>. In this way, we will use  <code>composer dump-autoload</code> for loading and rending php page from laravel statements. The detail of this way and some sub problems happing when I conduct it are shown step by step in the next section.</p><h2 id="Current-solution"><a href="#Current-solution" class="headerlink" title="Current solution"></a>Current solution</h2><ol><li><p>Clone a project to server by using </p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span></span><br></pre></td></tr></table></figure></li><li><p>Set <strong>apache</strong> as ownner of the root project and <code>chmod</code> to set access permision for <strong>www</strong></p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chown -R apache:apache [path_to_project]</span><br><span class="line">sudo chmod 775 [path_to_project]/storage</span><br><span class="line">sudo chmod 775 [path_to_project]/boostrap/cache</span><br></pre></td></tr></table></figure></li><li><p>If <strong>SElinux</strong> is enable on server, we have to add permission for accessing <code>project/storage</code> as well as <code>database</code> </p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chcon -R -t httpd_sys_rw_content_t [path_to_project]/storage</span><br><span class="line">setsebool -P httpd_can_network_connect_db on</span><br></pre></td></tr></table></figure></li><li><p>For <code>routing</code>, we have to revise apache config file <code>httpd.config</code>. It lets <code>htaccess</code> file of Laravel can works</p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim [path_to_httpd_config_folder]/httpd.conf</span><br></pre></td></tr></table></figure><ul><li>Change <code>AllowOverride None</code> to  <code>AllowOverride All</code> and uncommand <code>Options Indexes FollowSymLinks</code></li></ul></li><li><p>Restart apache by using </p> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service httpd restart</span><br></pre></td></tr></table></figure></li><li><p>Now, jump into your project and run some commands:</p><ul><li><p>Clear cache by using </p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php artisan cache:clear</span><br></pre></td></tr></table></figure></li><li><p>Reload class file by using </p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer dump-autoload</span><br></pre></td></tr></table></figure></li></ul></li><li><p>Afterward, create a shorcut directory in <code>/var/www/html/[sitename]</code> and link to directory <code>[path_to_project]/public</code></p><ul><li>Using create soft link command <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ln -s [path_to_project]/public var/www/html/[sitename]</span><br></pre></td></tr></table></figure></li></ul></li><li><p>Test a site by accessing <code>[domain]/[sitename]</code></p></li></ol><h4 id="Sub-problem-php-artisan-storage-link-does-not-work"><a href="#Sub-problem-php-artisan-storage-link-does-not-work" class="headerlink" title="Sub problem: php artisan storage:link does not work."></a>Sub problem: <strong>php artisan storage:link</strong> does not work.</h4><p>Although I have run </p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php aritisan storage:link</span><br></pre></td></tr></table></figure><p>We cannot access to any sub directory inside of <code>[path_to_project]/public/storage</code>.<br></p><p>I solved this problem by using create softlink command manually and for making sure I also set the permision for appache to access the new created dir.</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ln -s [path_to_project]/storage/app/public/ [path_to_project]/public/storage</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Technical </category>
+          
+          <category> PHP </category>
+          
+          <category> Laravel </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PHP </tag>
+            
+            <tag> Laravel </tag>
+            
+            <tag> CentOS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Deal with Swift-TransportException when send Gmail from Laravel application</title>
+      <link href="/2018/10/21/Deal-with-Swift-TransportException/"/>
+      <url>/2018/10/21/Deal-with-Swift-TransportException/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Swift-TransportException-Connection-could-not-be-established"><a href="#Swift-TransportException-Connection-could-not-be-established" class="headerlink" title="Swift_TransportException Connection could not be established"></a>Swift_TransportException Connection could not be established</h1><p>The problem has occured when we send a mail from production server using Gmail. The notice of exception is shown below.</p><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">Swift_TransportException<span class="built_in"> Connection </span>could <span class="keyword">not</span> be established with host smtp.gmail.com [Permission denied #13]</span><br></pre></td></tr></table></figure><h2 id="Causes"><a href="#Causes" class="headerlink" title="Causes"></a>Causes</h2><p>This problem is caused by SELinux. So we will run some command for accepting httpd can open socket and send mail to outside destination.</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>To allow for HTTPD (i.e. PHP) to make Network Socket connections</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setsebool -P httpd_can_network_connect on</span><br></pre></td></tr></table></figure><p>To allow for HTTPD (i.e. PHP) to send out mail.</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setsebool -P httpd_can_sendmail on</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Technical </category>
+          
+          <category> PHP </category>
+          
+          <category> Laravel </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PHP </tag>
+            
+            <tag> Laravel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Laravel Command Sheet</title>
+      <link href="/2018/10/21/Laravel-Command-Sheet/"/>
+      <url>/2018/10/21/Laravel-Command-Sheet/</url>
+      
+        <content type="html"><![CDATA[<p>This is a laravel commands board which are often used by me. I think it is good for aggregate some used command for quick searching.</p><table><thead><tr><th>Function</th><th style="text-align:center">Command</th></tr></thead><tbody><tr><td>Install laravel installer via Composer</td><td style="text-align:center"><code>composer global require &quot;laravel/installer&quot;</code></td></tr><tr><td>Create project via Laravel installer</td><td style="text-align:center"><code>laravel new [projectname]</code></td></tr><tr><td>Create project via Composer</td><td style="text-align:center"><code>composer create-project --prefer-dist laravel/laravel [projectname]</code></td></tr><tr><td>Run local development server</td><td style="text-align:center"><code>php artisan serve</code></td></tr><tr><td>Run development server on specific port and host</td><td style="text-align:center"><code>php artisan serve --host=110.xxx.xx.xx --port=8080&quot;</code></td></tr><tr><td>Enable maintenance mode</td><td style="text-align:center"><code>php artisan down</code></td></tr><tr><td>Run maintenance mode w message</td><td style="text-align:center"><code>php artisan down --message=&quot;Upgrading Database&quot; --retry=60</code></td></tr><tr><td>Enable maintenance mode for all except some IP</td><td style="text-align:center"><code>php artisan down --allow=127.0.0.1 --allow=192.168.0.0/16</code></td></tr><tr><td>Disable maintenance mode</td><td style="text-align:center"><code>php artisan up</code></td></tr><tr><td>Create database migration and database table</td><td style="text-align:center"><code>php artisan make:migration create_users_table --create=users</code></td></tr><tr><td>Add column database table</td><td style="text-align:center"><code>php artisan make:migration add_votes_to_users_table --table=users</code></td></tr><tr><td>Run migration</td><td style="text-align:center"><code>php artisan migrate</code></td></tr><tr><td>Rollback last migration</td><td style="text-align:center"><code>php artisan migrate:rollback</code></td></tr><tr><td>Rollback a specific step</td><td style="text-align:center"><code>php artisan migrate:rollback --step=5</code></td></tr><tr><td>Rollback all</td><td style="text-align:center"><code>php artisan migrate:reset</code></td></tr><tr><td>Rollback and re-migrate</td><td style="text-align:center"><code>php artisan migrate:refresh</code></td></tr><tr><td>Rollback and re-migrate with initial data in seeder</td><td style="text-align:center"><code>php artisan migrate:refresh --seed</code></td></tr><tr><td>Create seeder</td><td style="text-align:center"><code>php artisan make:seeder UsersTableSeeder</code></td></tr><tr><td>Run seeder to insert data into db</td><td style="text-align:center"><code>php artisan db:seed --class=UsersTableSeeder</code> or <code>php artisan db:seed</code></td></tr><tr><td>Create Eloquen ORM</td><td style="text-align:center"><code>php artisan make:model Flight</code></td></tr><tr><td>Create Eloquen ORM with migration</td><td style="text-align:center"><code>php artisan make:model Flight --migration</code> or <code>-m</code></td></tr><tr><td>Create controller</td><td style="text-align:center"><code>php artisan make:controller PhotoController</code></td></tr><tr><td>Create resource controller (with some defaut func)</td><td style="text-align:center"><code>php artisan make:controller PhotoController --resource</code></td></tr><tr><td>Create API controller</td><td style="text-align:center"><code>php artisan make:controller API/PhotoController --api</code></td></tr><tr><td>Create middleware</td><td style="text-align:center"><code>php artisan make:middleware CheckAge</code></td></tr><tr><td>Public storage disk</td><td style="text-align:center"><code>php artisan storage:link</code></td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Technical </category>
+          
+          <category> PHP </category>
+          
+          <category> Laravel </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PHP </tag>
+            
+            <tag> Laravel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>The end is not the end</title>
       <link href="/2017/03/25/The-end-is-not-the-end/"/>
       <url>/2017/03/25/The-end-is-not-the-end/</url>
